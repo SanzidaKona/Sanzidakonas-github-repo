@@ -307,6 +307,63 @@
     <div class="history-list" id="historyList"></div>
   </div>
 </div>
+<script>
+  let coins = 100;
+  let favCount = 0;
+  let copyCount = 0;
+
+  const favCounter = document.getElementById("heartCount");
+  const coinCounter = document.getElementById("coinCount");
+  const copyCounter = document.getElementById("copyCount");
+  const historyList = document.getElementById("historyList");
+  const clearBtn = document.getElementById("clearHistory");
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+    const heart = card.querySelector(".heart");
+    heart.addEventListener("click", () => {
+      heart.classList.toggle("active");
+      if (heart.classList.contains("active")) {
+        heart.classList.remove("fa-regular");
+        heart.classList.add("fa-solid");
+      } else {
+        heart.classList.remove("fa-solid");
+        heart.classList.add("fa-regular");
+      }
+      favCount = document.querySelectorAll(".heart.active").length;
+      favCounter.textContent = favCount;
+    });
+
+    const copyBtn = card.querySelector(".copy-button");
+    copyBtn.addEventListener("click", () => {
+      const number = card.querySelector(".number").textContent;
+      navigator.clipboard.writeText(number);
+      copyCount++;
+      copyCounter.textContent = copyCount;
+      alert(`Copied: ${number}`);
+    });
+
+    const callBtn = card.querySelector(".call-button");
+    callBtn.addEventListener("click", () => {
+      if (coins < 20) {
+        alert("Not enough coins to make a call!");
+        return;
+      }
+      coins -= 20;
+      coinCounter.textContent = coins;
+      const name = card.querySelector(".card-title").textContent;
+      const number = card.querySelector(".number").textContent;
+      alert(`Calling ${name} at ${number}`);
+      const item = document.createElement("div");
+      item.classList.add("history-item");
+      item.innerHTML = `<span>${name}<br>${number}</span><span>${new Date().toLocaleTimeString()}</span>`;
+      historyList.prepend(item);
+    });
+  });
+
+  clearBtn.addEventListener("click", () => { historyList.innerHTML = ""; });
+</script>
+
   
   </body>
 </html>
