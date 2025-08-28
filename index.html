@@ -9,9 +9,57 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
     body { background: #f9fafb; }
+
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 20px; background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+    }
+    .logo { display: flex; align-items: center; gap: 8px; }
+    .logo img { width: 32px; height: 32px; }
+    .logo span { font-size: 18px; font-weight: bold; color: #065f46; line-height: 1.1; }
+
+    .right {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 10px;
+    }
+    .count-box {
+      display: flex; align-items: center; gap: 6px;
+      background: #ecfdf5; padding: 4px 10px;
+      border-radius: 20px; font-size: 14px; font-weight: 500;
+    }
+    .count-box img { width: 16px; height: 16px; }
+
+    .copy-navbar-button {
+      background: #16a34a; color: white;
+      padding: 6px 16px; border: none; border-radius: 9999px;
+      font-size: 14px; font-weight: 600;
+      display: flex; align-items: center; gap: 6px; cursor: pointer;
+    }
+    .copy-navbar-button:hover { background: #15803d; }
   </style>
 </head>
 <body>
+    <nav>
+  <div class="logo">
+    <img src="assets/logo.png" alt="Logo">
+    <span>Emergency <br> Service</span>
+  </div>
+  <div class="right">
+    <div class="count-box">
+      <span id="heartCount">0</span>
+      <img src="assets/heart.png" alt="Heart">
+    </div>
+    <div class="count-box">
+      <span id="coinCount">100</span>
+      <img src="assets/coin.png" alt="Coin">
+    </div>
+    <button class="copy-navbar-button">
+      <span id="copyCount">0</span> Copy
+    </button>
+  </div>
+</nav>
+
 
 </body>
 </html>
