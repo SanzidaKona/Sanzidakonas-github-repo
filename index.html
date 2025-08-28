@@ -105,17 +105,64 @@
     font-weight: 500;
     display: flex; 
     align-items: center; 
-    justify-content: center; 
-    gap: 6px;
+    justify-content: center; gap: 6px;
   }
   .copy-button { background: #f9f9f9; border: 1px solid #ddd; }
   .call-button { background: #16a34a; color: white; }
-  .call-button:hover { background: #15803d; 
+  .call-button:hover { background: #15803d;}
+   
+       /* History */
+.history {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;  
+}
+
+.history-header { display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 10px; 
+}
+
+.history-header h4 { display: flex; 
+    align-items: center; 
+    gap: 6px; font-size: 16px; 
+    font-weight: normal; 
+}
+
+.history-header button {
+      background: #16b14f; 
+      color: white; 
+      border: none; 
+      border-radius: 20px;
+      padding: 5px 12px; 
+      font-size: 13px; 
+      cursor: pointer;
+    }
+    .history-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+    .history-item {
+      padding: 10px; 
+      background: #f9f9f9; 
+      border-radius: 8px;
+      font-size: 13px; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      border: 1px solid #eee;
+    }
+
+    @media (max-width: 992px) {
+      .main { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }
+    }
 
   </style>
 </head>
-<body>
-    <nav>
+<body> <nav>
   <div class="logo">
     <img src="assets/logo.png" alt="Logo">
     <span>Emergency <br> Service</span>
@@ -252,8 +299,14 @@
         </div>
     </div>
   </div>
-
-
-
-</body>
+   <div class="history">
+    <div class="history-header">
+      <h4><span class="material-icons-outlined">history</span> Call History</h4>
+      <button id="clearHistory">Clear</button>
+    </div>
+    <div class="history-list" id="historyList"></div>
+  </div>
+</div>
+  
+  </body>
 </html>
